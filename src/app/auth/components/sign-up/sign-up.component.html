@@ -1,0 +1,231 @@
+<button type="button" class="btn btn-primary" routerLink="/auth">
+  Ingresar con credenciales
+</button>
+<div class="row justify-content-center">
+  <!-- <div class="col-md-auto"> -->
+  <div class="col-auto">
+    <br />
+    <h5>Formulario de registro</h5>
+    <br />
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <form [formGroup]="userDataForm">
+              <div class="mb-3">
+                <label for="username" class="form-label" id="username"
+                  >Nombre de Usuario</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  placeholder="Nombre de usuario"
+                  formControlName="username"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label" id="password"
+                  >Contraseña</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="password"
+                  placeholder="Contraseña"
+                  formControlName="password"
+                />
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label
+                          for="documentType"
+                          class="form-label"
+                          id="documentType"
+                          >Tipo de documento</label
+                        >
+                        <select
+                          class="form-select"
+                          aria-label="Default select example"
+                          formControlName="documentType"
+                        >
+                          <option *ngFor="let documentType of documentTypes">
+                            {{ documentType.name }}
+                          </option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label for="documentNumber" class="form-label"
+                          >Numero de documento</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="documentNumber"
+                          placeholder="Numero de documento"
+                          formControlName="documentNumber"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="names" class="form-label">Nombres</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="names"
+                          placeholder="Nombres"
+                          formControlName="names"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="surnames" class="form-label"
+                          >Apellidos</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="surnames"
+                          placeholder="Apellidos"
+                          formControlName="surnames"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="gender" class="form-label" id="gender"
+                          >Genero</label
+                        >
+                        <select
+                          class="form-select"
+                          aria-label="Default select example"
+                          formControlName="gender"
+                        >
+                          <option *ngFor="let gender of genders">
+                            {{ gender.name }}
+                          </option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label for="email" class="form-label"
+                          >Correo electronico</label
+                        >
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="email"
+                          placeholder="Correo electronico"
+                          formControlName="email"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="phoneNumber" class="form-label"
+                          >Numero de celular</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="phoneNumber"
+                          placeholder="Numero de celular"
+                          formControlName="phoneNumber"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="address" class="form-label"
+                          >Direccion</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="address"
+                          placeholder="Direccion"
+                          formControlName="address"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="community" class="form-label"
+                          >Comunidad a al que pertenece</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="community"
+                          placeholder="Comunidad a al que pertenece"
+                          formControlName="community"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="mb-3">
+                    <label for="country" class="form-label"
+                      >País en el que vive</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="country"
+                      placeholder="País en el que vive"
+                      formControlName="country"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="city" class="form-label"
+                      >Ciudad en la que vive</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="city"
+                      placeholder="Ciudad en la que vive"
+                      formControlName="city"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="division" class="form-label"
+                      >Division en la que vive</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="division"
+                      placeholder="Division en la que vive"
+                      formControlName="division"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="companyWhereWork" class="form-label"
+                      >Empresa en la que trabaja</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="companyWhereWork"
+                      placeholder="Empresa en la que trabaja"
+                      formControlName="companyWhereWork"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="position" class="form-label"
+                      >Cargo que ocupa</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="position"
+                      placeholder="Cargo que ocupa"
+                      formControlName="position"
+                    />
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" (click)="submit()">
+                Registrar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

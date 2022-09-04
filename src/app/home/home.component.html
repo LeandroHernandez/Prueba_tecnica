@@ -1,0 +1,206 @@
+<!-- <p>home works!</p> -->
+
+<!-- <nav>
+  <h2>Bienvenido</h2>
+</nav> -->
+
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">Bienvenido</span>
+    <button type="button" class="btn btn-light" routerLink="/profile">
+      perfil
+    </button>
+  </div>
+</nav>
+
+<br />
+<h4 style="left: 2px">Productos</h4>
+<hr />
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col" *ngFor="let product of products">
+      <div class="product">
+        <h4>{{ product.name }}</h4>
+        <br />
+        <hr />
+        <br />
+        <img src="https://placekitten.com/g/300/300" alt="" /><br />
+        <p>{{ product.description }}</p>
+        <br />
+        <p>${{ product.price | number }}</p>
+        <hr />
+        <button
+          (click)="condition = true"
+          type="button"
+          class="btn btn-outline-dark"
+        >
+          select It
+        </button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="container">
+  <div class="row">
+    <div class="col col-pur" *ngFor="let purchase of pur">
+      <div class="card card-product" style="width: 18rem">
+        <img
+          src="https://placekitten.com/g/250/250"
+          class="card-img-top"
+          alt="productImage"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ purchase.selectedProduct!.name }}</h5>
+          <p class="card-text">
+            {{ purchase.selectedProduct!.description }}
+          </p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col">
+                ${{ purchase.selectedProduct!.price | number }}
+              </div>
+              <div *ngIf="purchase.amount > 1" class="col">
+                <b>Total: ${{ purchase.total | number }}</b>
+              </div>
+            </div>
+          </li>
+          <!-- <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li> -->
+        </ul>
+        <div class="card-body">
+          <div class="row">
+            <div class="col" style="margin: auto">
+              <button
+                (click)="less(purchase)"
+                type="button"
+                class="btn btn-light"
+              >
+                <i class="bi bi-caret-left-fill"></i>
+              </button>
+            </div>
+            <div class="col" style="margin: auto">
+              <div class="input-group">
+                <input
+                  type="number"
+                  [(ngModel)]="purchase.amount"
+                  placeholder="0"
+                  #ctrl="ngModel"
+                  disabled="true"
+                />
+              </div>
+            </div>
+            <div class="col" style="margin: auto">
+              <button
+                (click)="plus(purchase)"
+                type="button"
+                class="btn btn-light"
+              >
+                <i class="bi bi-caret-right-fill"></i>
+              </button>
+            </div>
+            <div class="col" style="margin: auto">
+              <button
+                *ngIf="purchase.amount > 0"
+                type="button"
+                class="btn btn-outline-dark"
+                (click)="addPurToPurchase(purchase)"
+              >
+                <i class="bi bi-bag-plus"></i>
+              </button>
+            </div>
+          </div>
+          <!-- <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>   -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br /><br /><br />
+<button
+  *ngIf="purchases.length > 0"
+  type="button"
+  class="btn btn-light btn-light-purchase"
+  data-bs-toggle="offcanvas"
+  data-bs-target="#offcanvasBottom"
+  aria-controls="offcanvasBottom"
+  (click)="addPursToPurchases()"
+>
+  <i class="bi bi-cart-plus" style="font-size: 50px"></i>
+</button>
+<!--  -->
+<!-- <button
+  *ngIf="purchases.length > 0"
+  class="btn btn-primary"
+  type="button"
+  data-bs-toggle="offcanvas"
+  data-bs-target="#offcanvasBottom"
+  aria-controls="offcanvasBottom"
+>
+  Toggle bottom offcanvas
+</button> -->
+
+<div
+  class="offcanvas offcanvas-bottom"
+  tabindex="-1"
+  id="offcanvasBottom"
+  aria-labelledby="offcanvasBottomLabel"
+  style="height: 90%"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasBottomLabel">
+      Carrito de compras
+    </h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body small">
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Producto</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Total</th>
+          <th scope="col">Quitar</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <tr *ngFor="let purchase of purchases; index as i">
+          <th scope="col">{{ i + 1 }}</th>
+          <td scope="col">{{ purchase.selectedProduct!.name }}</td>
+          <td scope="col">${{ purchase.selectedProduct!.price | number }}</td>
+          <td scope="col">{{ purchase.amount }}</td>
+          <!-- <td>{{total}}</td> -->
+          <td scope="col">${{ purchase.total | number }}</td>
+          <td>
+            <i
+              (click)="removePurchase(purchase)"
+              class="bi bi-trash3"
+              style="color: #ff0000"
+            ></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Total a pagar: <b>${{ total | number }} </b>
+    </p>
+    <button
+      *ngIf="purchases.length > 0"
+      (click)="makeAnOrder()"
+      type="button"
+      class="btn btn-primary"
+    >
+      Hacer pedido
+    </button>
+  </div>
+</div>

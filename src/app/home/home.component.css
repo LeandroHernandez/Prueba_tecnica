@@ -1,0 +1,30 @@
+.col  {
+  text-align: center;
+}
+
+/* .container .row .col { */
+.container .row .col-pur {
+  margin-bottom: 60px;
+}
+
+.card-product {
+  margin: auto;
+}
+
+.col input {
+  max-width: 50px;
+  display: block;
+}
+
+.btn-light-purchase {
+  background: rgb(240, 240, 240);
+  width: 80px;
+  border-radius: 100%;
+  position: fixed;
+  right: 3px;
+  bottom: 3px;
+}
+
+.btn-light-purchase .bi-cart-plus {
+  font-size: 3px;
+}

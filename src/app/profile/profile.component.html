@@ -1,0 +1,260 @@
+<!-- <p>profile works!</p> -->
+<!-- <div class="container">
+</div> -->
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button type="button" class="btn btn-light" routerLink="/home">
+      <i class="bi bi-arrow-bar-left"></i>
+    </button>
+    <button
+      type="button"
+      class="btn btn-light"
+      routerLink="/auth"
+      (click)="SignOff()"
+    >
+      Cerrar sesión
+    </button>
+  </div>
+</nav>
+<br />
+<h3>Su información</h3>
+<hr />
+<br />
+<!-- <div class="row justify-content-md-center"> -->
+<div class="row">
+  <!-- <div class="col-md-auto"> -->
+  <div class="col">
+    <form [formGroup]="userDataForm">
+      <div class="row">
+        <div class="col">
+          <b>Datos personales</b>
+          <hr />
+          <div class="row">
+            <div class="col">
+              <div class="mb-3">
+                <label for="documentType" class="form-label" id="documentType"
+                  >Tipo de documento</label
+                >
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  formControlName="documentType"
+                >
+                  <option *ngFor="let documentType of documentTypes">
+                    {{ documentType.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="documentNumber" class="form-label"
+                  >Numero de documento</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="documentNumber"
+                  placeholder="Numero de documento"
+                  formControlName="documentNumber"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="names" class="form-label">Nombres</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="names"
+                  placeholder="Nombres"
+                  formControlName="names"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="surnames" class="form-label">Apellidos</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="surnames"
+                  placeholder="Apellidos"
+                  formControlName="surnames"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="mb-3">
+                <label for="email" class="form-label">Correo electronico</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Correo electronico"
+                  formControlName="email"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="phoneNumber" class="form-label"
+                  >Numero de celular</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="phoneNumber"
+                  placeholder="Numero de celular"
+                  formControlName="phoneNumber"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="address" class="form-label">Direccion</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="address"
+                  placeholder="Direccion"
+                  formControlName="address"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="community" class="form-label"
+                  >Comunidad a al que pertenece</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="community"
+                  placeholder="Comunidad a al que pertenece"
+                  formControlName="community"
+                />
+              </div>
+            </div>
+          </div>
+          <b>Ubicación</b>
+          <hr />
+          <div class="mb-3">
+            <label for="country" class="form-label">País en el que vive</label>
+            <input
+              type="text"
+              class="form-control"
+              id="country"
+              placeholder="País en el que vive"
+              formControlName="country"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="city" class="form-label">País en el que vive</label>
+            <input
+              type="text"
+              class="form-control"
+              id="city"
+              placeholder="País en el que vive"
+              formControlName="city"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="division" class="form-label"
+              >Division en la que vive</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="division"
+              placeholder="Division en la que vive"
+              formControlName="division"
+            />
+          </div>
+        </div>
+        <div class="col">
+          <div class="row">
+            <div class="col">
+              <img
+                src="https://placekitten.com/g/650/250"
+                alt="Foto de Perfil"
+                class="photo"
+              />
+            </div>
+          </div>
+          <br />
+          <b>Otros datos</b>
+          <hr />
+          <div class="mb-3">
+            <label for="companyWhereWork" class="form-label"
+              >Empresa en la que trabaja</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="companyWhereWork"
+              placeholder="Empresa en la que trabaja"
+              formControlName="companyWhereWork"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="position" class="form-label">Cargo que ocupa</label>
+            <input
+              type="text"
+              class="form-control"
+              id="position"
+              placeholder="Cargo que ocupa"
+              formControlName="position"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- Submit section -->
+      <!-- <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div> -->
+      <button
+        *ngIf="userDataForm.valid && userDataForm.pristine === false"
+        type="submit"
+        class="btn btn-primary"
+        (click)="submit()"
+      >
+        Guardar
+      </button>
+    </form>
+  </div>
+</div>
+<!-- <div class="row">
+  <div class="col">
+    <span> Valid </span>
+    <pre> {{ userDataForm.valid }} </pre>
+
+    <span> Pristine </span>
+    <pre> {{ userDataForm.pristine }} </pre>
+
+    <span> Touched </span>
+    <pre> {{ userDataForm.touched }} </pre>
+
+    <span> Value </span>
+    <pre> {{ userDataForm.value | json }} </pre>
+  </div>
+</div> -->
+<!-- <span> CustomDirective </span>
+    <pre> {{userDataForm.controls.existencias?errors | json}} </pre> -->
+<div *ngIf="conditionShopping">
+  <br />
+  <h3>Sus compras</h3>
+  <hr />
+  <br />
+
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr *ngFor="let purchase of user?.shopping; index as i">
+        <th scope="col">{{ i + 1 }}</th>
+        <td scope="col">{{ purchase.selectedProduct!.name }}</td>
+        <td scope="col">${{ purchase.selectedProduct!.price | number }}</td>
+        <td scope="col">{{ purchase.amount }}</td>
+        <!-- <td>{{total}}</td> -->
+        <td scope="col">${{ purchase.total | number }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

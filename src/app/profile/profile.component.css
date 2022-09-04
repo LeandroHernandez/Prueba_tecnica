@@ -1,0 +1,29 @@
+/* .container {
+  justify-content: center;
+  max-width: 90%;
+  margin-top: 5px;
+  margin-left: 5px;
+} */
+
+/* .col{
+  width: 100%;
+} */
+
+nav {
+  min-width: 360px;
+}
+
+form {
+  padding: 1%;
+  min-width: 360px;
+}
+
+form .col {
+  min-width: 250px;
+}
+
+.photo {
+  width: 100%;
+  min-width: 350px;
+  height: 250px;
+}
